@@ -15,6 +15,11 @@ Renderer::Renderer(const std::size_t screen_width,
     std::cerr << "SDL_Error: " << SDL_GetError() << "\n";
   }
 
+  if (IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG) < 0) {
+    std::cerr << "SDL image could not initialize.\n";
+    std::cerr << "SDL_Error: " << SDL_GetError() << "\n";
+  }
+
   // Create Window
   sdl_window = SDL_CreateWindow("Snake Game", SDL_WINDOWPOS_CENTERED,
                                 SDL_WINDOWPOS_CENTERED, screen_width,
